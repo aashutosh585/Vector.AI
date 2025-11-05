@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, Download } from "lucide-react";
 import { useState } from "react";
 import { Edit } from "lucide-react";
 import axios from "axios";
@@ -51,6 +51,17 @@ const WriteArticle = () => {
     setLoading(false);
   };
 
+  const downloadAsText = () => {
+    const element = document.createElement("a");
+    const file = new Blob([content], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `article_${Date.now()}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success("Article downloaded successfully!");
+  };
+
   return (
     <div className="h-full overflow-y-scroll p-6 flex items-start flex-wrap gap-4 text-slate-700">
       {/* {left col} */}
@@ -101,9 +112,21 @@ const WriteArticle = () => {
 
       {/* Right col */}
       <div className="w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96 max-h-[600px]">
-        <div className="flex items-center gap-3">
-          <Edit className="w-5 h-5 text-[#4A7AFF]"></Edit>
-          <h1 className="text-xl font-semibold">Generated article</h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Edit className="w-5 h-5 text-[#4A7AFF]"></Edit>
+            <h1 className="text-xl font-semibold">Generated article</h1>
+          </div>
+          {content && (
+            <button
+              onClick={downloadAsText}
+              className="flex items-center gap-2 bg-[#4A7AFF] hover:bg-[#3B6DEF] text-white px-3 py-1.5 rounded-lg transition-colors"
+              title="Download Article"
+            >
+              <Download className="w-4 h-4" />
+              <span className="text-sm">Download</span>
+            </button>
+          )}
         </div>
 
         {!content ? (

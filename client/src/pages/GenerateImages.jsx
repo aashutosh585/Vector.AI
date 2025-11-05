@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sparkles, Image } from "lucide-react"; 
+import { Sparkles, Image, Download } from "lucide-react"; 
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
@@ -50,6 +50,22 @@ const GenerateImages = () => {
       toast.error(err.response?.data?.message || "Failed to generate image"); 
     }
     setLoading(false);
+  };
+
+  const downloadImage = async () => {
+    try {
+      const response = await fetch(content);
+      const blob = await response.blob();
+      const element = document.createElement("a");
+      element.href = URL.createObjectURL(blob);
+      element.download = `generated_image_${Date.now()}.png`;
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+      toast.success("Image downloaded successfully!");
+    } catch (error) {
+      toast.error("Failed to download image");
+    }
   };
 
   return (
@@ -125,9 +141,21 @@ const GenerateImages = () => {
 
       {/* Right column */}
       <div className="w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96">
-        <div className="flex items-center gap-3">
-          <Image className="w-5 h-5 text-[#00AD25]" />
-          <h1 className="text-xl font-semibold">Generated Image</h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Image className="w-5 h-5 text-[#00AD25]" />
+            <h1 className="text-xl font-semibold">Generated Image</h1>
+          </div>
+          {content && (
+            <button
+              onClick={downloadImage}
+              className="flex items-center gap-2 bg-[#00AD25] hover:bg-[#009922] text-white px-3 py-1.5 rounded-lg transition-colors"
+              title="Download Image"
+            >
+              <Download className="w-4 h-4" />
+              <span className="text-sm">Download</span>
+            </button>
+          )}
         </div>
 
         {!content ? (

@@ -1,4 +1,4 @@
-import { Hash, Sparkles } from "lucide-react";
+import { Hash, Sparkles, Download } from "lucide-react";
 import { useState } from "react";
 import Markdown from "react-markdown";
 import toast from "react-hot-toast";
@@ -47,6 +47,17 @@ const BlogTitles = () => {
       toast.error(err.message);
     }
     setLoading(false);
+  };
+
+  const downloadAsTitles = () => {
+    const element = document.createElement("a");
+    const file = new Blob([content], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `blog_titles_${Date.now()}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success("Blog titles downloaded successfully!");
   };
 
   return (
@@ -106,9 +117,21 @@ const BlogTitles = () => {
 
       {/* Right col */}
       <div className="w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96 ">
-        <div className="flex items-center gap-3">
-          <Hash className="w-5 h-5 text-[#8E37EB]" />
-          <h1 className="text-xl font-semibold">Generated titles</h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Hash className="w-5 h-5 text-[#8E37EB]" />
+            <h1 className="text-xl font-semibold">Generated titles</h1>
+          </div>
+          {content && (
+            <button
+              onClick={downloadAsTitles}
+              className="flex items-center gap-2 bg-[#8E37EB] hover:bg-[#7A2FD3] text-white px-3 py-1.5 rounded-lg transition-colors"
+              title="Download Titles"
+            >
+              <Download className="w-4 h-4" />
+              <span className="text-sm">Download</span>
+            </button>
+          )}
         </div>
 
         {!content ? (

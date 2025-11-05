@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 import React from "react";
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
@@ -39,6 +39,17 @@ const ReviewResume = () => {
       toast.error(err.message);
     }
     setLoading(false);
+  };
+
+  const downloadReview = () => {
+    const element = document.createElement("a");
+    const file = new Blob([content], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `resume_review_${Date.now()}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success("Resume review downloaded successfully!");
   };
   return (
     <div className="h-full overflow-y-scroll p-6 flex items-start flex-wrap gap-4 text-slate-700">
@@ -84,9 +95,21 @@ const ReviewResume = () => {
 
       {/* Right col */}
       <div className="w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96 max-h-[600px] ">
-        <div className="flex items-center gap-3 ">
-          <FileText className="w-5 h-5 text-[#00DA83]" />
-          <h1 className="text-xl font-semibold">Analysis Result</h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3 ">
+            <FileText className="w-5 h-5 text-[#00DA83]" />
+            <h1 className="text-xl font-semibold">Analysis Result</h1>
+          </div>
+          {content && (
+            <button
+              onClick={downloadReview}
+              className="flex items-center gap-2 bg-[#00DA83] hover:bg-[#00C376] text-white px-3 py-1.5 rounded-lg transition-colors"
+              title="Download Review"
+            >
+              <Download className="w-4 h-4" />
+              <span className="text-sm">Download</span>
+            </button>
+          )}
         </div>
 
         {!content ? (
