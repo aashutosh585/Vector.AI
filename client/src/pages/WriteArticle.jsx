@@ -4,7 +4,8 @@ import { Edit } from "lucide-react";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
 import Markdown from "react-markdown";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
+import Loading from "../components/Loading";
 
 
 
@@ -129,7 +130,7 @@ const WriteArticle = () => {
           )}
         </div>
 
-        {!content ? (
+        {!content && !loading ? (
           <div className="flex-1 flex justify-center items-center">
             <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
               <Edit className="w-9 h-9"></Edit>
@@ -137,10 +138,14 @@ const WriteArticle = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-3 h-full overflow-y-scroll text-sm text-slate-600">
-            <div className="reset-tw">
-              <Markdown>{content}</Markdown>
-            </div>
+          <div className="mt-3 flex-1 relative">
+            {loading ? (
+              <Loading />
+            ) : (
+              <div className="h-full overflow-y-auto reset-tw text-sm text-slate-600">
+                <Markdown>{content}</Markdown>
+              </div>
+            )}
           </div>
         )}
       </div>

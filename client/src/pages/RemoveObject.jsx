@@ -3,6 +3,7 @@ import { Sparkles, Scissors, Download } from "lucide-react";
 import axios from "axios";
 import {  useAuth } from '@clerk/clerk-react'
 import toast from "react-hot-toast";
+import Loading from "../components/Loading";
 
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
@@ -130,15 +131,21 @@ const RemoveObject = () => {
           )}
         </div>
 
-        {!content ? (
+        {!content && !loading ? (
           <div className="flex-1 flex justify-center items-center">
-          <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
-            <Scissors className="w-9 h-9" />
-            <p>Upload an image and click "Remove Object" to get started </p>
+            <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
+              <Scissors className="w-9 h-9" />
+              <p>Upload an image and click "Remove Object" to get started </p>
+            </div>
           </div>
-        </div>
         ) : (
-          <img src={content} alt="image"  className="mt-3 w-full h-full" />
+          <div className="mt-3 flex-1 relative">
+            {loading ? (
+              <Loading />
+            ) : (
+              <img src={content} alt="image" className="w-full h-full" />
+            )}
+          </div>
         )}
         
       </div>

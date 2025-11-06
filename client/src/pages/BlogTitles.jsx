@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -38,20 +39,21 @@ const BlogTitles = () => {
         { headers: { Authorization: `Bearer ${await getToken()}` } }
       );
 
-      if (data.success===true) {
+      if (data.success === true) {
         setContent(data.content);
       } else {
         toast.error(data.message);
       }
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const downloadAsTitles = () => {
     const element = document.createElement("a");
-    const file = new Blob([content], { type: 'text/plain' });
+    const file = new Blob([content], { type: "text/plain" });
     element.href = URL.createObjectURL(file);
     element.download = `blog_titles_${Date.now()}.txt`;
     document.body.appendChild(element);
@@ -62,7 +64,7 @@ const BlogTitles = () => {
 
   return (
     <div className="h-full overflow-y-scroll p-6 flex items-start flex-wrap gap-4 text-slate-700">
-      {/* {left col} */}
+      {/* Left col */}
       <form
         onSubmit={onSubmitHandler}
         className="w-full max-w-lg p-4 bg-white rounded-lg border border-gray-200 "
@@ -125,7 +127,8 @@ const BlogTitles = () => {
           {content && (
             <button
               onClick={downloadAsTitles}
-              className="flex items-center gap-2 bg-[#8E37EB] hover:bg-[#7A2FD3] text-white px-3 py-1.5 rounded-lg transition-colors"
+              disabled={loading}
+              className="flex items-center gap-2 bg-[#8E37EB] hover:bg-[#7A2FD3] disabled:opacity-60 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded-lg transition-colors"
               title="Download Titles"
             >
               <Download className="w-4 h-4" />
@@ -134,7 +137,7 @@ const BlogTitles = () => {
           )}
         </div>
 
-        {!content ? (
+        {!content && !loading ? (
           <div className="flex-1 flex justify-center items-center">
             <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
               <Hash className="w-9 h-9" />
@@ -142,10 +145,15 @@ const BlogTitles = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-3 h-full overflow-y-scroll text-sm text-slate-600">
-            <div className="reset-tw">
-              <Markdown>{content}</Markdown>
-            </div>
+          <div className="mt-3 flex-1 relative">
+            {loading ? (
+             
+              <Loading />
+            ) : (
+              <div className="h-full overflow-y-auto reset-tw text-sm text-slate-600">
+                <Markdown>{content}</Markdown>
+              </div>
+            )}
           </div>
         )}
       </div>
