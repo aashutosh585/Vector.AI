@@ -17,27 +17,6 @@
   <img src="img/img2.png" alt="AI Content Generation Interface" width="45%"/>
 </div>
 
-## 📋 Table of Contents
-
-- [🎯 Features](#-features)
-- [🛠 Tech Stack](#-tech-stack)
-- [🚀 Quick Start](#-quick-start)
-- [📁 Project Structure](#-project-structure)
-- [⚙️ Installation](#️-installation)
-- [🔐 Environment Variables](#-environment-variables)
-- [🏃‍♂️ Usage](#️-usage)
-- [📡 API Documentation](#-api-documentation)
-- [🗄 Database Schema](#-database-schema)
-- [🎨 UI/UX Features](#-uiux-features)
-- [🔧 Development](#-development)
-- [🚢 Deployment](#-deployment)
-- [🧪 Testing](#-testing)
-- [📊 Performance](#-performance)
-- [🛡️ Security](#️-security)
-- [🤝 Contributing](#-contributing)
-
-- [🙏 Acknowledgments](#-acknowledgments)
-
 ## 🎯 Features
 
 > **Transform your content creation workflow with AI-powered tools**
