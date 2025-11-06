@@ -20,8 +20,8 @@ const Hero = () => {
           with <span className="text-primary">AI Tools</span>
         </h1>
         <p className="mt-4 max-w-xs sm:max-w-lg 2xl:max-w-3xl mx-auto">
-          Transform your content creation with our suite of premium AI Tools.
-          Write articles, generate images, and enhance your workflow.
+          Transform your content creation with our comprehensive suite of premium AI tools.
+          Write articles, generate stunning images, and streamline your creative workflow.
         </p>
       </div>
 
@@ -39,7 +39,7 @@ const Hero = () => {
       </div>
 
       <div className="flex items-center gap-4 mt-8 mx-auto text-gray-600">
-        <img src={assets.user_group} alt="" className="h-8" />Trusted by 10K+ people
+        <img src={assets.user_group} alt="" className="h-8" />Trusted by 1K+ creators
       </div>
 
     </div>

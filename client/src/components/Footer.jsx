@@ -7,17 +7,21 @@ export default function Footer() {
                 <div className="md:max-w-96">
                     <img className="h-9" src={assets.logo} alt="logo" />
                     <p className="mt-6 text-sm">
-                       Experiance the Power of AI with Vector.AI <br /> Transform your content creation with our suite of premium AI Tools. Write article, generate images, and enhance your workflow
+                       Experience the Power of AI with Vector.AI <br /> Transform your content creation with our suite of premium AI Tools. Write articles, generate images, and enhance your workflow.
                     </p>
+                    <div className="mt-4 text-sm space-y-1">
+                        <p><strong>Contact:</strong> ashutoshmaurya585@gmail.com</p>
+                        <p><strong>Phone:</strong> +91 8601813566</p>
+                    </div>
                 </div>
                 <div className="flex-1 flex items-start md:justify-end gap-20">
                     <div>
                         <h2 className="font-semibold mb-5 text-gray-800">Company</h2>
                         <ul className="text-sm space-y-2">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Privacy policy</a></li>
+                            <li><a href="/" className="hover:text-primary transition-colors">Home</a></li>
+                            <li><a href="/ai" className="hover:text-primary transition-colors">Dashboard</a></li>
+                            <li><a href="/ai/community" className="hover:text-primary transition-colors">Community</a></li>
+                            <li><a href="mailto:ashutoshmaurya585@gmail.com" className="hover:text-primary transition-colors">Contact</a></li>
                         </ul>
                     </div>
                     <div>
@@ -33,7 +37,7 @@ export default function Footer() {
                 </div>
             </div>
             <p className="pt-4 text-center text-xs md:text-sm pb-5">
-                Copyright 2025 © VectorAI All Right Reserved.
+                Copyright 2025 © Vector.AI - Built with ❤️ by Ashutosh Maurya 
             </p>
         </footer>
     );

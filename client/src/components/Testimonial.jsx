@@ -5,28 +5,28 @@ const Testimonial = () => {
     {
       image:
         "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
-      name: "John Doe",
-      title: "Marketing Director, TechCorp",
+      name: "Alex Johnson",
+      title: "Digital Marketing Manager",
       content:
-        "ContentAI has revolutionized our content workflow. The quality of the articles is outstanding, and it saves us hours of work every week.",
-      rating: 4,
+        "Vector.AI has revolutionized our content workflow. The AI article writer creates high-quality content, and the image generator produces stunning visuals for our campaigns.",
+      rating: 5,
     },
     {
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-      name: "Jane Smith",
-      title: "Content Creator, TechCorp",
+      name: "Sarah Chen",
+      title: "Content Creator & Blogger",
       content:
-        "ContentAI has made our content creation process effortless. The AI tools have helped us produce high-quality content faster than ever before.",
+        "Vector.AI's blog title generator and article writer have made my content creation process incredibly efficient. I can now focus on strategy while AI handles the heavy lifting.",
       rating: 5,
     },
     {
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
-      name: "David Lee",
-      title: "Content Writer, TechCorp",
+      name: "Michael Rodriguez",
+      title: "Freelance Designer",
       content:
-        "ContentAI has transformed our content creation process. The AI tools have helped us produce high-quality content faster than ever before.",
+        "The background removal and object removal features are game-changers for my design work. Vector.AI has all the AI tools I need in one platform.",
       rating: 4,
     },
   ];
