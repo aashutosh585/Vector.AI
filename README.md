@@ -4,7 +4,7 @@
 
   **A comprehensive full-stack AI SaaS application that empowers users to create content, generate images, and enhance their digital assets using cutting-edge artificial intelligence.**
 
-  [🌐 **Live Demo**](https://vectorai-inky.vercel.app/) • [📖 **Documentation**](#-table-of-contents) • [🚀 **Quick Start**](#-quick-start) • [🤝 **Contributing**](#-contributing)
+  [🌐 **Live Demo**](https://vectorai.aashutosh.me/) • [📖 **Documentation**](#-table-of-contents) • [🚀 **Quick Start**](#-quick-start) • [🤝 **Contributing**](#-contributing)
 
 </div>
 
@@ -679,7 +679,11 @@ If Vector.AI helped you create amazing content, please consider:
 
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/aashutosh585)
 [![Open Source](https://img.shields.io/badge/Open%20Source-💚-green?style=for-the-badge)](https://github.com/aashutosh585/Vector.AI)
-[![AI Powered](https://img.shields.io/badge/AI%20Powered-🤖-blue?style=for-the-badge)](https://vectorai-inky.vercel.app/)
+[![AI Powered](https://img.shields.io/badge/AI%20Powered-🤖-blue?style=for-the-badge)](https://vectorai.aashutosh.me/)
+
+---
+
+**👨‍💻 Developer Portfolio:** [www.aashutosh.me](https://www.aashutosh.me)
 
 **[⬆ Back to Top](#-vectorai---ai-powered-content-creation-platform)**
 
